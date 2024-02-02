@@ -2,6 +2,7 @@ package com.project.bookMembership.user;
 
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -30,15 +31,14 @@ public class User implements UserDetails {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
-    private String firstname;
-
-    private String lastname;
-
+    private Long idUser;
+    private String pNumber;
+    private String name;
     private String email;
-    
+    private Date registrationDate;
     private String password;
+   
 
     @Enumerated(EnumType.STRING)
     private Role  role;
@@ -86,5 +86,5 @@ public class User implements UserDetails {
     }
     
 
-
+//
 }
