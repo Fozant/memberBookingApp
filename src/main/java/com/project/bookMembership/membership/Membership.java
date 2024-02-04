@@ -2,6 +2,7 @@ package com.project.bookMembership.membership;
 
 import java.util.Date;
 
+import com.project.bookMembership.transaction.Transaction;
 import com.project.bookMembership.user.User;
 
 import jakarta.persistence.Entity;
@@ -10,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,8 +33,11 @@ public class Membership {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-    private Long transactionId;
+    
+    @OneToOne
+    @JoinColumn(name = "transaction_id", nullable = false)
+    private Transaction transactionId;
+   
 
 
     private Date startDate;

@@ -1,9 +1,6 @@
-package com.transaction;
-
-import java.util.Date;
+package com.project.bookMembership.transaction;
 
 import com.project.bookMembership.membership.Membership;
-import com.project.bookMembership.user.User;
 import com.project.bookMembership.visitPackage.VisitPackage;
 
 import jakarta.persistence.Entity;
