@@ -2,6 +2,7 @@ package com.project.bookMembership.classes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.project.bookMembership.classes.TrainingClassRepo;
 
 @Service
 public class ClassServiceImpl implements ClassService {
@@ -19,8 +20,9 @@ public class ClassServiceImpl implements ClassService {
             .classDate(request.getClassDate())
             .classTime(request.getClassTime())
             .classCapasity(request.getClassCapasity())
+           
             .build();
-
+          
         return trainingClassRepo.save(trainingClass);
     }
 
