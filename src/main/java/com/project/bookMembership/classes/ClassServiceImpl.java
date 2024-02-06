@@ -2,7 +2,6 @@ package com.project.bookMembership.classes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.project.bookMembership.classes.TrainingClassRepo;
 
 @Service
 public class ClassServiceImpl implements ClassService {
