@@ -3,6 +3,8 @@ package com.project.bookMembership.classes;
 import com.project.bookMembership.user.User;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
@@ -19,16 +21,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "ClassDetail")
-@IdClass(ClassDetailId.class)
 public class ClassDetail {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "idUser")
     private User idUser;
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "class_id", nullable = false)
+    @JoinColumn(name = "class_id", referencedColumnName = "idClass")
     private TrainingClass idClass;
 }

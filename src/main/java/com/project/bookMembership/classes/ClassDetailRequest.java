@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClassDetailRequest {
     
-    private Long idUser;
+    
     private Long idClass;
     private String token;
 }

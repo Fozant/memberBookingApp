@@ -33,19 +33,7 @@ public class ClassController {
     @PostMapping("/addDetail")
     public ResponseEntity<String> addDetail(@RequestBody ClassDetailRequest classDetailRequest) {
       
-        String username = jwtService.extractUsername(classDetailRequest.getToken());
-
-        
-        Long userId = userService.getUserIdByUsername(username);
-
-        if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not found");
-        }
-
-        
-        classDetailRequest.setIdUser(userId);
-
-        
+      
         classDetailService.addClassDetail(classDetailRequest);
 
         return ResponseEntity.ok("Class added successfully");

@@ -1,7 +1,6 @@
 package com.project.bookMembership.classes;
 
 import org.springframework.stereotype.Service;
-
 import com.project.bookMembership.user.User;
 import com.project.bookMembership.user.UserRepo;
 import com.project.bookMembership.config.JwtService;
@@ -23,25 +22,25 @@ public class ClassDetailServiceImpl implements ClassDetailService {
     }
 
     @Override
-    public ClassDetail addClassDetail(ClassDetailRequest classDetailRequest) {
-        String username = jwtService.extractUsername(classDetailRequest.getToken());
-        Long idClass = classDetailRequest.getIdClass();
+public ClassDetail addClassDetail(ClassDetailRequest classDetailRequest) {
+    // Extract username from the provided token
+    String username = jwtService.extractUsername(classDetailRequest.getToken());
 
-        // Assuming you have a repository method to find TrainingClass by id
-        TrainingClass trainingClass = classDetailRepository.findTrainingClassById(idClass)
-                .orElseThrow(() -> new RuntimeException("TrainingClass not found"));
+    // Retrieve the TrainingClass using the provided idClass
+    Long idClass = classDetailRequest.getIdClass();
+    TrainingClass trainingClass = classDetailRepository.findTrainingClassById(idClass)
+            .orElseThrow(() -> new RuntimeException("TrainingClass not found"));
 
-        User user = userRepo.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    // Retrieve the User using the extracted username
+    User user = userRepo.findByEmail(username)
+            .orElseThrow(() -> new RuntimeException("User not found"));
 
-        var classDetailId = new ClassDetailId(user, trainingClass);
+    var classDetail = ClassDetail.builder()
+            .idUser(user) // Set User object directly
+            .idClass(trainingClass)
+            .build();
 
-        // Use the constructor of the builder to set the id
-        var classDetail = ClassDetail.builder()
-                .idUser(user)
-                .idClass(trainingClass)
-                .build();
+    return classDetailRepository.save(classDetail);
+}
 
-        return classDetailRepository.save(classDetail);
-    }
 }

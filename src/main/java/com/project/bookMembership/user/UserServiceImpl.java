@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Long getUserIdByUsername(String username) {
-        User user = userRepo.findByUsername(username).orElse(null);
+        User user = userRepo.findByEmail(username).orElse(null);
 
    
         return (user != null) ? user.getIdUser() : null;
