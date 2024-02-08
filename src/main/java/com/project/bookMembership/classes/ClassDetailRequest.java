@@ -1,6 +1,5 @@
 package com.project.bookMembership.classes;
 
-import com.project.bookMembership.user.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
