@@ -1,0 +1,40 @@
+http://localhost:8081/api/v1/auth/register
+Token Required = no
+{
+
+ "pNumber":"214124412",
+    "name":"bff124124fcccb",
+    "email":"ab",   
+    "password":"ab"
+  
+   
+
+    
+}
+http://localhost:8081/api/v1/auth/authenticate
+Token Required = no
+{
+
+
+    "email":"ab",   
+    "password":"ab"
+    
+}
+
+http://localhost:8081/api/v1/class/add
+Token Required = yes
+{
+  "classDate": "2024-02-03",
+  "classTime": "14:00:00",
+  "classCapasity": 1
+}
+
+
+
+http://localhost:8081/api/v1/class/addDetail
+Token Required = yes
+{
+
+  "idClass": 1, 
+   "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYiIsImlhdCI6MTcwNzM2NTMyOSwiZXhwIjoxNzA3MzY2NzY5fQ.NlIqy5xrcanjGe0_sYEUN_DvbiO-pyVj89LonEamKAU"
+}
