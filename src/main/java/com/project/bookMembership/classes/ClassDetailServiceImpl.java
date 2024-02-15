@@ -55,13 +55,13 @@ public ClassDetail addClassDetail(ClassDetailRequest classDetailRequest) {
        User user = userRepo.findByEmail(emailz)
        .orElseThrow(() -> new RuntimeException("User not found"));
 
-// Check if the training class exists
+        // Check if the training class exists
         Long idTrainingclass = classDetailRequest.getIdClass();
-TrainingClass trainingClass = trainingClassRepo.findById(idTrainingclass)
-       .orElseThrow(() -> new RuntimeException("Training class not found"));
+        TrainingClass trainingClass = trainingClassRepo.findById(idTrainingclass)
+        .orElseThrow(() -> new RuntimeException("Training class not found"));
 
 
-var classDetail = ClassDetail.builder()
+            var classDetail = ClassDetail.builder()
             .idUser(user) 
             .idClass(trainingClass)
             .build();
