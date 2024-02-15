@@ -1,14 +1,13 @@
 package com.project.bookMembership.classes;
 
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.bookMembership.config.JwtService;
-import com.project.bookMembership.user.UserService;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,8 +17,6 @@ import lombok.RequiredArgsConstructor;
 public class ClassController {
 
     private final ClassService classService;
-    private final JwtService jwtService;
-    private final UserService userService;
     private final ClassDetailService classDetailService;
 
     @PostMapping("/add")

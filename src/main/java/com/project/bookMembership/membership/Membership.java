@@ -43,5 +43,6 @@ public class Membership {
     private Date startDate;
     private Date endDate;
     private Long price;
+    private Long duration;
     
 }
