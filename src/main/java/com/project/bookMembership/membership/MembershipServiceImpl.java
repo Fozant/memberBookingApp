@@ -29,35 +29,44 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
     @Override
-    public Membership save(MembershipRequest membershipRequest) {
-        String emailz = jwtService.extractUsername(membershipRequest.getToken());
-        User user = userRepo.findByEmail(emailz)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-    
-        // Create Transaction entity
-        Transaction transaction = Transaction.builder()
-                .visitStartDate(membershipRequest.getVisitStartDate())
-                .visitEndDate(membershipRequest.getVisitEndDate())
-                .paymentType(membershipRequest.getPaymentType())
-                .paymentMethod(membershipRequest.getPaymentMethod())
-                .paymentStatus(membershipRequest.getPaymentStatus())
-                .transactionPrice(membershipRequest.getTransactionPrice())
-                .build();
-    
-        // Save Transaction entity
-        transactionService.save(transaction);
-    
-        // Create Membership entity and set the saved Transaction
-        Membership membership = Membership.builder()
-                .user(user)
-                .transaction(transaction)  // Set the saved Transaction
-                .startDate(membershipRequest.getStartDate())
-                .endDate(membershipRequest.getEndDate())
-                .price(membershipRequest.getPrice())
-                .duration(membershipRequest.getDuration())
-                .build();
-    
-        // Save Membership entity
-        return membershipRepo.save(membership);
-    }
+   public Membership save(MembershipRequest membershipRequest) {
+    String emailz = jwtService.extractUsername(membershipRequest.getToken());
+    User user = userRepo.findByEmail(emailz)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    // Create Transaction entity
+    Transaction transaction = Transaction.builder()
+            .visitStartDate(membershipRequest.getVisitStartDate())
+            .visitEndDate(membershipRequest.getVisitEndDate())
+            .paymentType(membershipRequest.getPaymentType())
+            .paymentMethod(membershipRequest.getPaymentMethod())
+            .paymentStatus(membershipRequest.getPaymentStatus())
+            .transactionPrice(membershipRequest.getTransactionPrice())
+            .build();
+
+    // Save Transaction entity
+    transactionService.save(transaction);
+
+    // Create Membership entity without setting the transaction
+    Membership membership = Membership.builder()
+            .user(user)
+            .transaction(transaction)
+            .startDate(membershipRequest.getStartDate())
+            .endDate(membershipRequest.getEndDate())
+            .price(membershipRequest.getPrice())
+            .duration(membershipRequest.getDuration())
+            .build();
+
+    // Save Membership entity to obtain the generated membershipId
+    Membership savedMembership = membershipRepo.save(membership);
+
+    // Update Transaction entity with the membershipId
+    transaction.setMembership(membership);
+
+    // Save the updated Transaction entity
+    transactionService.save(transaction);
+
+    // Return the saved Membership
+    return savedMembership;
+}
 }

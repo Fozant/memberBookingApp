@@ -21,7 +21,7 @@ public class MembershipController {
        
         membershipService.save(membershipRequest); 
 
-        return ResponseEntity.ok("Class added successfully");
+        return ResponseEntity.ok("Buy membership successfully");
     }
 
     

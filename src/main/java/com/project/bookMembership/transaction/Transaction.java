@@ -31,12 +31,12 @@ public class Transaction {
     private Long idTransaction;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "transaction_id", nullable = false)
+    @JoinColumn(name = "membership_id", nullable = true)
     private Membership membership;
 
     
     @ManyToOne
-    @JoinColumn(name = "Visit_id", nullable = false)
+    @JoinColumn(name = "Visit_id", nullable = true)
     private VisitPackage visitPackage;
 
 

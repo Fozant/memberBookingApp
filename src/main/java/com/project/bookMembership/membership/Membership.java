@@ -34,8 +34,8 @@ public class Membership {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
     
-    @OneToOne
-    @JoinColumn(name = "transaction_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "transaction_id", nullable = true)
     private Transaction transaction;
    
 
