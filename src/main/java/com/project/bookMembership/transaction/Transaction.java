@@ -1,8 +1,11 @@
 package com.project.bookMembership.transaction;
 
+import java.util.Date;
+
 import com.project.bookMembership.membership.Membership;
 import com.project.bookMembership.visitPackage.VisitPackage;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,15 +23,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "VisitPackage")
+@Table(name = "Transaction")
 public class Transaction {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idTransaction;
 
-    @ManyToOne
-    @JoinColumn(name = "membership_id", nullable = false)
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "transaction_id", nullable = false)
     private Membership membership;
 
     
@@ -37,8 +40,10 @@ public class Transaction {
     private VisitPackage visitPackage;
 
 
-
+    private Date visitStartDate;
+    private Date visitEndDate;
     private String paymentType;
     private String paymentMethod;
     private String paymentStatus;
+    private Long transactionPrice;
 }
