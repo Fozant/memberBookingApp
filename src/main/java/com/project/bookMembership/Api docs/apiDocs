@@ -38,3 +38,22 @@ Token Required = yes
   "idClass": 1, 
    "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYiIsImlhdCI6MTcwNzM2NTMyOSwiZXhwIjoxNzA3MzY2NzY5fQ.NlIqy5xrcanjGe0_sYEUN_DvbiO-pyVj89LonEamKAU"
 }
+
+http://localhost:8081/api/v1/membership/buy
+Token Required = yes
+{
+
+
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYiIsImlhdCI6MTcwODA5Mzc1NCwiZXhwIjoxNzA4MDk1MTk0fQ.1IbNrsyz0-f3SUqGr_EC13_HjbeH1SJN6hYVaEyJuG0",
+  "startDate": "2024-02-20T12:00:00Z",
+  "endDate": "2024-03-20T12:00:00Z",
+  "price": 100,
+  "duration": 30,
+  "paymentType": "Credit Card",
+  "paymentMethod": "Online",
+  "paymentStatus": "Paid",
+  "visitStartDate": "2024-02-21T12:00:00Z",
+  "visitEndDate": "2024-03-21T12:00:00Z",
+  "transactionPrice": 50
+
+}
