@@ -36,7 +36,7 @@ public class VisitPackage {
     
     @OneToOne
     @JoinColumn(name = "transaction_id", nullable = false)
-    private Transaction transactionId;
+    private Transaction transaction;
 
 
     private Date startDate;

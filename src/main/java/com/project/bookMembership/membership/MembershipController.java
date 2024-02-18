@@ -17,7 +17,7 @@ public class MembershipController {
 
 
     @PostMapping("/buy")
-    public ResponseEntity<String> addClass(@RequestBody MembershipRequest membershipRequest) {
+    public ResponseEntity<String> buymembership(@RequestBody MembershipRequest membershipRequest) {
        
         membershipService.save(membershipRequest); 
 

@@ -47,7 +47,7 @@ public class MembershipServiceImpl implements MembershipService {
     // Save Transaction entity
     transactionService.save(transaction);
 
-    // Create Membership entity without setting the transaction
+    
     Membership membership = Membership.builder()
             .user(user)
             .transaction(transaction)
