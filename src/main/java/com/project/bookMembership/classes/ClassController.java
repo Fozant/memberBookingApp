@@ -1,10 +1,16 @@
 package com.project.bookMembership.classes;
 
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -35,6 +41,28 @@ public class ClassController {
 
         return ResponseEntity.ok("Class added successfully");
     }
+    @GetMapping("/getClasses")
+    public ResponseEntity<List<GetClassResponse>> getClasses() {
 
+    List<TrainingClass> trainingClasses = classService.getTrainingClass();
+    
+
+    if (trainingClasses.isEmpty()) {
+        throw new RuntimeException("No training classes found");
+    }
+
+
+    List<GetClassResponse> responseList = trainingClasses.stream()
+        .map(trainingClass -> GetClassResponse.builder()
+            .idClass(trainingClass.getIdClass())
+            .classDate(trainingClass.getClassDate())
+            .classTime(trainingClass.getClassTime())
+            .classCapasity(trainingClass.getClassCapasity())
+            .build())
+        .collect(Collectors.toList());
+
+    // Return the list wrapped in a ResponseEntity
+    return ResponseEntity.ok(responseList);
+}
     
 }
