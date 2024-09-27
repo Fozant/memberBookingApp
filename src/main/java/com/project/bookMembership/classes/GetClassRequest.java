@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class GetClassRequest {
-   
 
     private Long idClass;
     

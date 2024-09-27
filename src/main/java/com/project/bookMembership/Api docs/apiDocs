@@ -39,6 +39,12 @@ Token Required = yes
    "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYiIsImlhdCI6MTcwNzM2NTMyOSwiZXhwIjoxNzA3MzY2NzY5fQ.NlIqy5xrcanjGe0_sYEUN_DvbiO-pyVj89LonEamKAU"
 }
 
+http://localhost:8081/api/v1/class/getClasses
+Token Required = yes
+{
+
+}
+
 http://localhost:8081/api/v1/membership/buy
 Token Required = yes
 {

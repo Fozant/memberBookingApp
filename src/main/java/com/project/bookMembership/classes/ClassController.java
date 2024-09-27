@@ -61,7 +61,7 @@ public class ClassController {
             .build())
         .collect(Collectors.toList());
 
-    // Return the list wrapped in a ResponseEntity
+
     return ResponseEntity.ok(responseList);
 }
     
