@@ -31,10 +31,6 @@ public class ClassServiceImpl implements ClassService {
         
         TrainingClass savedClass = trainingClassRepo.save(trainingClass);
     
-     
-        
-    
-      
         var classTrainerDetail = ClassTrainerDetail.builder()
             .idTrainer(request.getIdTrainer())  
             .idClass(savedClass.getIdClass())  
