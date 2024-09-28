@@ -1,3 +1,5 @@
+
+POST
 http://localhost:8081/api/v1/auth/register
 Token Required = no
 {
@@ -7,10 +9,10 @@ Token Required = no
     "email":"ab",   
     "password":"ab"
   
-   
-
-    
+  
 }
+
+POST
 http://localhost:8081/api/v1/auth/authenticate
 Token Required = no
 {
@@ -21,6 +23,7 @@ Token Required = no
     
 }
 
+POST
 http://localhost:8081/api/v1/class/add
 Token Required = yes
 {
@@ -40,7 +43,7 @@ Token Required = yes
 }
 
 
-http://localhost:8081/api/v1/class/addDetail
+http://localhost:8081/api/v1/class/book
 Token Required = yes
 {
 

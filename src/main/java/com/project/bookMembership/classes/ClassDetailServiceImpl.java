@@ -48,7 +48,7 @@ public class ClassDetailServiceImpl implements ClassDetailService {
 
 
 @Override
-public ClassDetail addClassDetail(ClassDetailRequest classDetailRequest) {
+public ClassDetail book(ClassDetailRequest classDetailRequest) {
        
 
        String emailz =(jwtService.extractUsername(classDetailRequest.getToken()));

@@ -26,7 +26,6 @@ public class ClassServiceImpl implements ClassService {
     @Override
     public TrainingClass save(ClassRequest request) {
     
-        
         var trainingClass = TrainingClass.builder()
             .classDate(request.getClassDate())
             .classTime(request.getClassTime())

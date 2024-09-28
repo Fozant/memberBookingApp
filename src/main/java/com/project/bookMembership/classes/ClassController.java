@@ -28,13 +28,13 @@ public class ClassController {
         return ResponseEntity.ok("Class added successfully");
     }
 
-    @PostMapping("/addDetail")
-    public ResponseEntity<String> addDetail(@RequestBody ClassDetailRequest classDetailRequest) {
+    @PostMapping("/book")
+    public ResponseEntity<String> book(@RequestBody ClassDetailRequest classDetailRequest) {
       
       
-        classDetailService.addClassDetail(classDetailRequest);
+        classDetailService.book(classDetailRequest);
 
-        return ResponseEntity.ok("Class added successfully");
+        return ResponseEntity.ok("book class success");
     }
     
     @GetMapping("/getClasses")
