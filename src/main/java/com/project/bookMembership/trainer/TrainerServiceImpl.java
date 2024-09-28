@@ -26,8 +26,7 @@ public class TrainerServiceImpl implements TrainerService{
             .build();
     
             
-          trainerRepo.save(trainer);
-      return null;
+            return trainerRepo.save(trainer); 
     }
     
 }

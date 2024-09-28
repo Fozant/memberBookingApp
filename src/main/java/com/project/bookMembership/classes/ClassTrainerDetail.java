@@ -1,5 +1,7 @@
 package com.project.bookMembership.classes;
 
+import com.project.bookMembership.trainer.Trainer;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,9 +29,9 @@ public class ClassTrainerDetail {
 
     @ManyToOne
     @JoinColumn(name = "trainer_id", referencedColumnName = "idTrainer")
-    private Long idTrainer;
+    private Trainer idTrainer;
 
     @OneToOne
     @JoinColumn(name = "class_id", referencedColumnName = "idClass")
-    private Long idClass;
+    private TrainingClass idClass;
 }
