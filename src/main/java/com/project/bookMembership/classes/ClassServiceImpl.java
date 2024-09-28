@@ -5,16 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.bookMembership.trainer.Trainer;
+import com.project.bookMembership.trainer.TrainerRepo;
+
 @Service
 public class ClassServiceImpl implements ClassService {
 
     private final TrainingClassRepo trainingClassRepo;
     private final ClassTrainerDetailRepo classTrainerRepo;
+    private final TrainerRepo trainerRepo;
 
     @Autowired
-    public ClassServiceImpl(TrainingClassRepo trainingClassRepo, ClassTrainerDetailRepo classTrainerRepo) {
+    public ClassServiceImpl(TrainingClassRepo trainingClassRepo, ClassTrainerDetailRepo classTrainerRepo,TrainerRepo trainerRepo) {
         this.trainingClassRepo = trainingClassRepo;
         this.classTrainerRepo = classTrainerRepo; 
+        this.trainerRepo = trainerRepo; 
     }
 
 
@@ -30,10 +35,14 @@ public class ClassServiceImpl implements ClassService {
     
         
         TrainingClass savedClass = trainingClassRepo.save(trainingClass);
-    
+      
+        Trainer trainer = trainerRepo.findById(request.getIdTrainer())
+        .orElseThrow(() -> new RuntimeException("Trainer not found"));
+
+
         var classTrainerDetail = ClassTrainerDetail.builder()
-            .idTrainer(request.getIdTrainer())  
-            .idClass(savedClass.getIdClass())  
+            .idTrainer(trainer)  
+            .idClass(savedClass)  
             .build();
     
      

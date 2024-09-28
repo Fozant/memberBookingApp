@@ -28,7 +28,14 @@ Token Required = yes
   "classTime": "14:00:00",
   "classCapasity": 1
 }
-
+POST
+http://localhost:8081/api/v1/trainer/add
+Token Required = yes
+{
+  "trainerName": "ujang ",
+  "trainerDescription": "melatih boxing dengan buruk"
+ 
+}
 
 
 http://localhost:8081/api/v1/class/addDetail
