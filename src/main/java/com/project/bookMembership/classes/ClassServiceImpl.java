@@ -9,21 +9,42 @@ import org.springframework.stereotype.Service;
 public class ClassServiceImpl implements ClassService {
 
     private final TrainingClassRepo trainingClassRepo;
-    
+    private final ClassTrainerDetailRepo classTrainerRepo;
+
     @Autowired
-    public ClassServiceImpl(TrainingClassRepo trainingClassRepo) {
+    public ClassServiceImpl(TrainingClassRepo trainingClassRepo, ClassTrainerDetailRepo classTrainerRepo) {
         this.trainingClassRepo = trainingClassRepo;
+        this.classTrainerRepo = classTrainerRepo; 
     }
+
 
     @Override
     public TrainingClass save(ClassRequest request) {
+    
+        
         var trainingClass = TrainingClass.builder()
             .classDate(request.getClassDate())
             .classTime(request.getClassTime())
             .classCapasity(request.getClassCapasity())
             .build();
-          
-        return trainingClassRepo.save(trainingClass);
+    
+        
+        TrainingClass savedClass = trainingClassRepo.save(trainingClass);
+    
+     
+        
+    
+      
+        var classTrainerDetail = ClassTrainerDetail.builder()
+            .idTrainer(request.getIdTrainer())  
+            .idClass(savedClass.getIdClass())  
+            .build();
+    
+     
+            classTrainerRepo.save(classTrainerDetail);  
+    
+       
+        return savedClass;
     }
 
     @Override

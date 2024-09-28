@@ -17,4 +17,5 @@ public class ClassRequest {
     private LocalTime classTime;
     private Long classCapasity;
     private String requirement;
+    private Long idTrainer;
 }

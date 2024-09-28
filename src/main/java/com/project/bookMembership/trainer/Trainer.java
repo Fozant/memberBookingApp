@@ -1,4 +1,4 @@
-package com.trainer;
+package com.project.bookMembership.trainer;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

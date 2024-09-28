@@ -47,7 +47,7 @@ public class VisitPackageServiceImpl implements VisitPackageService{
             .build();
 
 
-             // Save Transaction entity
+
             transactionService.save(transaction);
 
           VisitPackage vpPackage = VisitPackage.builder()
@@ -60,16 +60,16 @@ public class VisitPackageServiceImpl implements VisitPackageService{
             .visitUsed(visitPackageRequest.getVisitUsed())
             .build();
 
-    // Save Membership entity to obtain the generated membershipId
+   
     VisitPackage savedVPackage = visitPackageRepo.save(vpPackage);
 
-    // Update Transaction entity with the membershipId
+
     transaction.setVisitPackage(vpPackage);
 
-    // Save the updated Transaction entity
+  
     transactionService.save(transaction);
 
-    // Return the saved Membership
+ 
     return savedVPackage;
     }
     

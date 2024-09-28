@@ -1,7 +1,5 @@
 package com.project.bookMembership.classes;
 
-import com.project.bookMembership.user.User;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,18 +18,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ClassDetail")
-public class ClassDetail {
+@Table(name = "ClassTrainerDetail")
+public class ClassTrainerDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "idUser")
-    private User idUser;
+    @JoinColumn(name = "trainer_id", referencedColumnName = "idTrainer")
+    private Long idTrainer;
 
     @OneToOne
     @JoinColumn(name = "class_id", referencedColumnName = "idClass")
-    private TrainingClass idClass;
+    private Long idClass;
 }

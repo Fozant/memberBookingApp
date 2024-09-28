@@ -22,7 +22,7 @@ public class ClassController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addClass(@RequestBody ClassRequest classRequest) {
-       
+        
         classService.save(classRequest); 
 
         return ResponseEntity.ok("Class added successfully");
