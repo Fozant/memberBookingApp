@@ -1,8 +1,4 @@
-package com.project.bookMembership.classes;
-
-
-import java.time.LocalTime;
-import java.util.Date;
+package com.trainer;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,16 +15,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "TrainingClass")
-public class TrainingClass {
-    
+@Table(name = "trainer")
+public class Trainer {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idClass;
+    private Long idTrainer;
 
-    private Date classDate;
-    private LocalTime classTime;
-    private Long classCapasity;
-    private String requirement;
+    private String trainerName;
+    private String trainerDescription;
+
+
 }

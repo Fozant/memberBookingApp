@@ -16,4 +16,5 @@ public class ClassRequest {
     private Date classDate;
     private LocalTime classTime;
     private Long classCapasity;
+    private String requirement;
 }

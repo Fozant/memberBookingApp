@@ -2,7 +2,6 @@ package com.project.bookMembership.classes;
 
 import java.util.List;
 
-import org.apache.logging.log4j.util.TriConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +10,7 @@ public class ClassServiceImpl implements ClassService {
 
     private final TrainingClassRepo trainingClassRepo;
     
-     @Autowired
+    @Autowired
     public ClassServiceImpl(TrainingClassRepo trainingClassRepo) {
         this.trainingClassRepo = trainingClassRepo;
     }
@@ -22,7 +21,6 @@ public class ClassServiceImpl implements ClassService {
             .classDate(request.getClassDate())
             .classTime(request.getClassTime())
             .classCapasity(request.getClassCapasity())
-           
             .build();
           
         return trainingClassRepo.save(trainingClass);
@@ -30,7 +28,7 @@ public class ClassServiceImpl implements ClassService {
 
     @Override
     public List<TrainingClass> getTrainingClass() {
-        List<TrainingClass> classes = trainingClassRepo.findAll();
+           List<TrainingClass> classes = trainingClassRepo.findAll();
     
         if (classes.isEmpty()) {
             throw new RuntimeException("No training classes found");

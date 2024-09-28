@@ -4,13 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.bookMembership.config.JwtService;
-import com.project.bookMembership.membership.MembershipRepo;
 import com.project.bookMembership.transaction.Transaction;
 import com.project.bookMembership.transaction.TransactionService;
 import com.project.bookMembership.user.User;
 import com.project.bookMembership.user.UserRepo;
-
-import lombok.RequiredArgsConstructor;
 
 @Service
 
