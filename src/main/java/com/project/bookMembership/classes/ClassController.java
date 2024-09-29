@@ -3,6 +3,7 @@ package com.project.bookMembership.classes;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/api/v1/class")
@@ -44,9 +46,8 @@ public class ClassController {
     
 
     if (trainingClasses.isEmpty()) {
-        throw new RuntimeException("No training classes found");
+        return ResponseEntity.ok(new ArrayList <>());
     }
-
 
     List<GetClassResponse> responseList = trainingClasses.stream()
         .map(trainingClass -> GetClassResponse.builder()

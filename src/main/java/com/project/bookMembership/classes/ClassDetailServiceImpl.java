@@ -34,7 +34,7 @@ public ClassDetail book(ClassDetailRequest classDetailRequest) {
        User user = userRepo.findByEmail(emailz)
        .orElseThrow(() -> new RuntimeException("User not found"));
 
-   
+
         Long idTrainingclass = classDetailRequest.getIdClass();
         TrainingClass trainingClass = trainingClassRepo.findById(idTrainingclass)
         .orElseThrow(() -> new RuntimeException("Training class not found"));

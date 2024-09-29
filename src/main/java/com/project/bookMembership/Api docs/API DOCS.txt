@@ -2,6 +2,7 @@
 POST
 http://localhost:8081/api/v1/auth/register
 Token Required = no
+REQUEST
 {
 
  "pNumber":"214124412",
@@ -15,6 +16,7 @@ Token Required = no
 POST
 http://localhost:8081/api/v1/auth/authenticate
 Token Required = no
+REQUEST
 {
 
 
@@ -26,6 +28,7 @@ Token Required = no
 POST
 http://localhost:8081/api/v1/class/add
 Token Required = yes
+REQUEST
 {
   "classDate": "2024-02-03",
   "classTime": "14:00:00",
@@ -36,6 +39,7 @@ Token Required = yes
 POST
 http://localhost:8081/api/v1/trainer/add
 Token Required = yes
+REQUEST
 {
   "trainerName": "ujang ",
   "trainerDescription": "melatih boxing dengan buruk"
@@ -45,6 +49,7 @@ Token Required = yes
 
 http://localhost:8081/api/v1/class/book
 Token Required = yes
+REQUEST
 {
 
   "idClass": 1, 
@@ -53,9 +58,19 @@ Token Required = yes
 
 http://localhost:8081/api/v1/class/getClasses
 Token Required = yes
+REQUEST
 {
 
 }
+RESPONSE
+[
+    {
+        "idClass": 2150702,
+        "classDate": "2024-02-03T00:00:00.000+00:00",
+        "classTime": "14:00:00",
+        "classCapasity": 1
+    }
+]
 
 http://localhost:8081/api/v1/membership/buy
 Token Required = yes

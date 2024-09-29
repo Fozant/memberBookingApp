@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 
 public class GetClassResponse {
 
-    private int capacity;
+    
     private Long idClass;
 
     private Date classDate;

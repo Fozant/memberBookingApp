@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.bookMembership.trainer.Trainer;
 import com.project.bookMembership.trainer.TrainerRepo;
+import java.util.ArrayList;
 
 @Service
 public class ClassServiceImpl implements ClassService {
@@ -53,10 +54,11 @@ public class ClassServiceImpl implements ClassService {
 
     @Override
     public List<TrainingClass> getTrainingClass() {
+
            List<TrainingClass> classes = trainingClassRepo.findAll();
     
         if (classes.isEmpty()) {
-            throw new RuntimeException("No training classes found");
+           return new ArrayList<>();
         }
     
         return classes;
