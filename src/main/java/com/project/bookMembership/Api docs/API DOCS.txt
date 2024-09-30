@@ -33,8 +33,10 @@ REQUEST
   "classDate": "2024-02-03",
   "classTime": "14:00:00",
   "classCapasity": 1,
-  "requirement":"minimsl 28 tahun punya handwrap",
+  "classRequirement":"minimsl 28 tahun punya handwrap",
   "idTrainer": 1
+  "className": "muaythai"
+ 
 }
 POST
 http://localhost:8081/api/v1/trainer/add

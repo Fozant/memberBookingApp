@@ -16,6 +16,7 @@ public class ClassRequest {
     private Date classDate;
     private LocalTime classTime;
     private Long classCapasity;
-    private String requirement;
+    private String classRequirement;
+    private String className;
     private Long idTrainer;
 }

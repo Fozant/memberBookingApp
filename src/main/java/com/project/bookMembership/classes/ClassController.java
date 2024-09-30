@@ -42,11 +42,11 @@ public class ClassController {
     @GetMapping("/getClasses")
     public ResponseEntity<List<GetClassResponse>> getClasses(@RequestParam(required = false) Long id) {
     
-        List<TrainingClass> trainingClasses;
+        List<TrainingClass> trainingClasses = new ArrayList<>();
         
         if (id == null) {
             trainingClasses = classService.getTrainingClass(); 
-        } else {
+        } else if(id!=null){
             trainingClasses = classService.getTrainingClassById(id);  
         }
     
@@ -54,9 +54,12 @@ public class ClassController {
         List<GetClassResponse> responseList = trainingClasses.stream()
             .map(trainingClass -> GetClassResponse.builder()
                 .idClass(trainingClass.getIdClass())
+                .className((trainingClass.getClassName()))
+                .classRequirement(trainingClass.getClassRequirement())
                 .classDate(trainingClass.getClassDate())
                 .classTime(trainingClass.getClassTime())
                 .classCapasity(trainingClass.getClassCapasity())
+                
                 .build())
             .collect(Collectors.toList());
     

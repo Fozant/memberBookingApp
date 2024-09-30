@@ -26,9 +26,11 @@ public class TrainingClass {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idClass;
+    private String className;
+    private String classRequirement;
 
     private Date classDate;
     private LocalTime classTime;
     private Long classCapasity;
-    private String requirement;
+ 
 }

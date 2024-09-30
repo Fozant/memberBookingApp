@@ -33,6 +33,8 @@ public class ClassServiceImpl implements ClassService {
             .classDate(request.getClassDate())
             .classTime(request.getClassTime())
             .classCapasity(request.getClassCapasity())
+            .className(request.getClassName())
+            .classRequirement(request.getClassRequirement())
             .build();
     
         

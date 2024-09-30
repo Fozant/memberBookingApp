@@ -21,5 +21,7 @@ public class GetClassResponse {
     private Date classDate;
     private LocalTime classTime;
     private Long classCapasity;
+    private String classRequirement;
+    private String className;
     
 }
