@@ -62,6 +62,12 @@ REQUEST
 {
 
 }
+http://localhost:8081/api/v1/class/getClasses?id=2150702
+Token Required = yes
+REQUEST
+{
+
+}
 RESPONSE
 [
     {

@@ -2,8 +2,10 @@ package com.project.bookMembership.classes;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import com.project.bookMembership.trainer.Trainer;
 import com.project.bookMembership.trainer.TrainerRepo;
@@ -62,6 +64,19 @@ public class ClassServiceImpl implements ClassService {
         }
     
         return classes;
+    }
+
+
+    @Override
+    public List<TrainingClass> getTrainingClassById(Long id) {
+        
+        Optional<TrainingClass> trainingClass = trainingClassRepo.findById(id);
+    
+        if (trainingClass.isEmpty()) {
+           return new ArrayList<>();
+        }
+    
+        return List.of(trainingClass.get());
     }
    
 

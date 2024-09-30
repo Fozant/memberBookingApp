@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
-import java.util.Collections;
 
 @RestController
 @RequestMapping("/api/v1/class")
@@ -40,26 +40,29 @@ public class ClassController {
     }
     
     @GetMapping("/getClasses")
-    public ResponseEntity<List<GetClassResponse>> getClasses() {
-
-    List<TrainingClass> trainingClasses = classService.getTrainingClass();
+    public ResponseEntity<List<GetClassResponse>> getClasses(@RequestParam(required = false) Long id) {
     
-
-    if (trainingClasses.isEmpty()) {
-        return ResponseEntity.ok(new ArrayList <>());
+        List<TrainingClass> trainingClasses;
+        
+        if (id == null) {
+            trainingClasses = classService.getTrainingClass(); 
+        } else {
+            trainingClasses = classService.getTrainingClassById(id);  
+        }
+    
+       
+        List<GetClassResponse> responseList = trainingClasses.stream()
+            .map(trainingClass -> GetClassResponse.builder()
+                .idClass(trainingClass.getIdClass())
+                .classDate(trainingClass.getClassDate())
+                .classTime(trainingClass.getClassTime())
+                .classCapasity(trainingClass.getClassCapasity())
+                .build())
+            .collect(Collectors.toList());
+    
+       
+        return ResponseEntity.ok(responseList);
     }
-
-    List<GetClassResponse> responseList = trainingClasses.stream()
-        .map(trainingClass -> GetClassResponse.builder()
-            .idClass(trainingClass.getIdClass())
-            .classDate(trainingClass.getClassDate())
-            .classTime(trainingClass.getClassTime())
-            .classCapasity(trainingClass.getClassCapasity())
-            .build())
-        .collect(Collectors.toList());
-
-
-    return ResponseEntity.ok(responseList);
-}
+    
     
 }
