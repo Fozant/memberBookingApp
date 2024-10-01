@@ -54,12 +54,9 @@ public class ClassController {
         } else {
             trainingClasses = classService.getTrainingClass(); 
         }
-    
-       System.out.println(date);
-       System.out.println(date);
-       System.out.println(date);
-       System.out.println(date);
-       System.out.println(date);
+
+
+        
         List<GetClassResponse> responseList = trainingClasses.stream()
             .map(trainingClass -> GetClassResponse.builder()
                 .idClass(trainingClass.getIdClass())

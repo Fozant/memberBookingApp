@@ -80,6 +80,26 @@ RESPONSE
         "classCapasity": 1
     }
 ]
+http://localhost:8081/api/v1/class/getClasses?date=2024-02-03
+Token Required = yes
+REQUEST
+{
+
+}
+
+Response 
+[
+    {
+        "idClass": 2150852,
+        "classDate": "2024-02-05T00:00:00.000+00:00",
+        "classTime": "14:00:00",
+        "classCapasity": 1,
+        "classRequirement": "minimsl 28 tahun punya handwrap",
+        "className": "muaythai"
+    }
+]
+
+
 
 http://localhost:8081/api/v1/membership/buy
 Token Required = yes
