@@ -10,6 +10,7 @@ import java.util.Optional;
 import com.project.bookMembership.trainer.Trainer;
 import com.project.bookMembership.trainer.TrainerRepo;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Service
 public class ClassServiceImpl implements ClassService {
@@ -79,6 +80,19 @@ public class ClassServiceImpl implements ClassService {
         }
     
         return List.of(trainingClass.get());
+    }
+
+
+    @Override
+    public List<TrainingClass> getTrainingClassByDate(Date date) {
+        
+        List<TrainingClass> trainingClass = trainingClassRepo.findByClassDate(date);
+    
+        if (trainingClass.isEmpty()) {
+           return new ArrayList<>();
+        }
+    
+        return trainingClass;
     }
    
 

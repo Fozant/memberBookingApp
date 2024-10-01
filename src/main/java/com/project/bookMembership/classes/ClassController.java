@@ -4,7 +4,9 @@ package com.project.bookMembership.classes;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
+import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,17 +42,24 @@ public class ClassController {
     }
     
     @GetMapping("/getClasses")
-    public ResponseEntity<List<GetClassResponse>> getClasses(@RequestParam(required = false) Long id) {
+    public ResponseEntity<List<GetClassResponse>> getClasses(@RequestParam(required = false) Long id,
+                                                             @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(required = false) Date date) {
     
         List<TrainingClass> trainingClasses = new ArrayList<>();
         
-        if (id == null) {
+        if (id != null) {
+            trainingClasses = classService.getTrainingClassById(id);
+        } else if (date != null) {
+            trainingClasses = classService.getTrainingClassByDate(date);
+        } else {
             trainingClasses = classService.getTrainingClass(); 
-        } else if(id!=null){
-            trainingClasses = classService.getTrainingClassById(id);  
         }
     
-       
+       System.out.println(date);
+       System.out.println(date);
+       System.out.println(date);
+       System.out.println(date);
+       System.out.println(date);
         List<GetClassResponse> responseList = trainingClasses.stream()
             .map(trainingClass -> GetClassResponse.builder()
                 .idClass(trainingClass.getIdClass())

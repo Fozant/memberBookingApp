@@ -38,6 +38,7 @@ REQUEST
   "className": "muaythai"
  
 }
+
 POST
 http://localhost:8081/api/v1/trainer/add
 Token Required = yes
