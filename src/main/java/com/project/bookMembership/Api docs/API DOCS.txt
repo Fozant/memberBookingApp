@@ -59,6 +59,13 @@ REQUEST
    "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYiIsImlhdCI6MTcwNzM2NTMyOSwiZXhwIjoxNzA3MzY2NzY5fQ.NlIqy5xrcanjGe0_sYEUN_DvbiO-pyVj89LonEamKAU"
 }
 
+http://localhost:8081/api/v1/class/getHistory
+Token Required = yes
+REQUEST
+{
+    "token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1IiwiaWF0IjoxNzI3NzU3MDYxLCJleHAiOjE3Mjc3NTg1MDF9.i6BsQk8GiJKVGJUlcAn_RNMirUXk_wHZSmK2SIsTJ8o"
+}
+
 http://localhost:8081/api/v1/class/getClasses
 Token Required = yes
 REQUEST

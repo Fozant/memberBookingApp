@@ -56,7 +56,6 @@ public class ClassController {
         }
 
 
-        
         List<GetClassResponse> responseList = trainingClasses.stream()
             .map(trainingClass -> GetClassResponse.builder()
                 .idClass(trainingClass.getIdClass())
@@ -73,5 +72,29 @@ public class ClassController {
         return ResponseEntity.ok(responseList);
     }
     
+    
+    @GetMapping("/getHistory")
+    public ResponseEntity<List<GetClassResponse>> getHistory(@RequestBody ClassHistoryRequest classHistoryRequest) {
+    
+        List<TrainingClass> trainingClasses = new ArrayList<>();
+     
+
+            trainingClasses = classService.getClassHistory(classHistoryRequest);
+     
+        List<GetClassResponse> responseList = trainingClasses.stream()
+            .map(trainingClass -> GetClassResponse.builder()
+                .idClass(trainingClass.getIdClass())
+                .className((trainingClass.getClassName()))
+                .classRequirement(trainingClass.getClassRequirement())
+                .classDate(trainingClass.getClassDate())
+                .classTime(trainingClass.getClassTime())
+                .classCapasity(trainingClass.getClassCapasity())
+                
+                .build())
+            .collect(Collectors.toList());
+    
+       
+        return ResponseEntity.ok(responseList);
+    }
     
 }

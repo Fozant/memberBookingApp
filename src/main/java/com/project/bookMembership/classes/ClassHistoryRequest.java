@@ -1,6 +1,5 @@
 package com.project.bookMembership.classes;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClassDetailRequest {
+public class ClassHistoryRequest {
     
-    
-    private Long idClass;
     private String token;
-    
 }

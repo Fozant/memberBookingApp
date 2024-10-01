@@ -9,6 +9,7 @@ public interface ClassService {
     List<TrainingClass> getTrainingClass();
     List<TrainingClass> getTrainingClassById(Long id);
     List<TrainingClass> getTrainingClassByDate(Date date);
+    List<TrainingClass> getClassHistory(ClassHistoryRequest classHistoryRequest);
     
     
 } 

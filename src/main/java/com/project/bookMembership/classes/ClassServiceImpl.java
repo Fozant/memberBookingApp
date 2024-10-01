@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
+import com.project.bookMembership.config.JwtService;
 import com.project.bookMembership.trainer.Trainer;
 import com.project.bookMembership.trainer.TrainerRepo;
+import com.project.bookMembership.user.User;
+import com.project.bookMembership.user.UserRepo;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -18,12 +22,15 @@ public class ClassServiceImpl implements ClassService {
     private final TrainingClassRepo trainingClassRepo;
     private final ClassTrainerDetailRepo classTrainerRepo;
     private final TrainerRepo trainerRepo;
-
+    private final JwtService jwtService;
+    private final UserRepo userRepo;
     @Autowired
-    public ClassServiceImpl(TrainingClassRepo trainingClassRepo, ClassTrainerDetailRepo classTrainerRepo,TrainerRepo trainerRepo) {
+    public ClassServiceImpl(TrainingClassRepo trainingClassRepo, ClassTrainerDetailRepo classTrainerRepo,TrainerRepo trainerRepo, JwtService jwtService,UserRepo userRepo) {
         this.trainingClassRepo = trainingClassRepo;
         this.classTrainerRepo = classTrainerRepo; 
         this.trainerRepo = trainerRepo; 
+        this.jwtService = jwtService; 
+        this.userRepo = userRepo; 
     }
 
 
@@ -94,20 +101,26 @@ public class ClassServiceImpl implements ClassService {
     
         return trainingClass;
     }
+
+    @Override
+    public List<TrainingClass> getClassHistory(ClassHistoryRequest classHistoryRequest) {
+        String email = jwtService.extractUsername(classHistoryRequest.getToken());
+        
+        // Fetch the user as an Optional
+        Optional<User> optionalUser = userRepo.findByEmail(email);
+        
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get(); 
+            
+            List<TrainingClass> trainingClasses = trainingClassRepo.findByUserId(user.getIdUser());
+            return trainingClasses;
+        } else {
+
+            return new ArrayList<>(); 
+        }
+    }
    
 
-    /*
-
-     *  public AuthenticationResponse register(RegisterRequest request) {
-        var user = User.builder()
-            .name(request.getName())
-            .email(request.getEmail())
-            .pNumber(request.getpNumber())
-            .password(passwordEncoder.encode(request.getPassword()))
-            .role(Role.USER)
-            .build();
-
-        repo.save(user);
-     */
     
 }
