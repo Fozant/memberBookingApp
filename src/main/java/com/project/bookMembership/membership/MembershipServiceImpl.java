@@ -29,7 +29,7 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
     @Override
-   public Membership save(MembershipRequest membershipRequest) {
+public Membership save(MembershipRequest membershipRequest) {
     String emailz = jwtService.extractUsername(membershipRequest.getToken());
     User user = userRepo.findByEmail(emailz)
             .orElseThrow(() -> new RuntimeException("User not found"));
@@ -47,7 +47,6 @@ public class MembershipServiceImpl implements MembershipService {
     // Save Transaction entity
     transactionService.save(transaction);
 
-    
     Membership membership = Membership.builder()
             .user(user)
             .transaction(transaction)
