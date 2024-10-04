@@ -1,16 +1,21 @@
 package com.project.bookMembership.transaction;
 
+import java.sql.Blob;
 import java.util.Date;
+
+import org.hibernate.annotations.Type;
 
 import com.project.bookMembership.membership.Membership;
 import com.project.bookMembership.visitPackage.VisitPackage;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -42,8 +47,12 @@ public class Transaction {
 
     private Date visitStartDate;
     private Date visitEndDate;
-    private String paymentType;
+    // private String paymentType;
     private String paymentMethod;
     private String paymentStatus;
     private Long transactionPrice;
+
+    @Lob
+    @Column(name = "bukti_transfer", columnDefinition = "LONGBLOB")
+    private byte[] buktiTransfer;
 }

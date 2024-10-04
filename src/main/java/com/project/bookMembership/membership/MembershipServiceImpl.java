@@ -8,6 +8,8 @@ import com.project.bookMembership.transaction.Transaction;
 import com.project.bookMembership.transaction.TransactionService;
 import com.project.bookMembership.user.User;
 import com.project.bookMembership.user.UserRepo;
+import java.io.IOException;
+import utils.ImageUtils;
 
 @Service
 public class MembershipServiceImpl implements MembershipService {
@@ -30,18 +32,23 @@ public class MembershipServiceImpl implements MembershipService {
 
     @Override
 public Membership save(MembershipRequest membershipRequest) {
+        try {
     String emailz = jwtService.extractUsername(membershipRequest.getToken());
     User user = userRepo.findByEmail(emailz)
             .orElseThrow(() -> new RuntimeException("User not found"));
 
+
+         
+
     // Create Transaction entity
     Transaction transaction = Transaction.builder()
-            .visitStartDate(membershipRequest.getVisitStartDate())
-            .visitEndDate(membershipRequest.getVisitEndDate())
-            .paymentType(membershipRequest.getPaymentType())
+        //     .visitStartDate(membershipRequest.getVisitStartDate())
+        //     .visitEndDate(membershipRequest.getVisitEndDate())
+        //     .paymentType(membershipRequest.getPaymentType())
             .paymentMethod(membershipRequest.getPaymentMethod())
-            .paymentStatus(membershipRequest.getPaymentStatus())
+            .paymentStatus("WAITING FOR APPROVAL")
             .transactionPrice(membershipRequest.getTransactionPrice())
+            .buktiTransfer(ImageUtils.compressImage(membershipRequest.getBuktiTransfer().getBytes()))
             .build();
 
     // Save Transaction entity
@@ -53,7 +60,7 @@ public Membership save(MembershipRequest membershipRequest) {
             .startDate(membershipRequest.getStartDate())
             .endDate(membershipRequest.getEndDate())
             .price(membershipRequest.getPrice())
-            .duration(membershipRequest.getDuration())
+        //     .duration(membershipRequest.getDuration())
             .build();
 
     // Save Membership entity to obtain the generated membershipId
@@ -67,5 +74,7 @@ public Membership save(MembershipRequest membershipRequest) {
 
     // Return the saved Membership
     return savedMembership;
-}
-}
+} catch (IOException e) {
+        throw new RuntimeException("Error processing image", e);  // Handle IOException by wrapping it
+    }
+}}

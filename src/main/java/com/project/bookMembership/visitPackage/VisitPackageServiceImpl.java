@@ -40,7 +40,7 @@ public class VisitPackageServiceImpl implements VisitPackageService{
         Transaction transaction = Transaction.builder()
             .visitStartDate(visitPackageRequest.getVisitStartDate())
             .visitEndDate(visitPackageRequest.getVisitEndDate())
-            .paymentType(visitPackageRequest.getPaymentType())
+            // .paymentType(visitPackageRequest.getPaymentType())
             .paymentMethod(visitPackageRequest.getPaymentMethod())
             .paymentStatus(visitPackageRequest.getPaymentStatus())
             .transactionPrice(visitPackageRequest.getTransactionPrice())

@@ -1,0 +1,69 @@
+curl --location 'http://localhost:8081/api/v1/auth/register' \
+--header 'Content-Type: application/json' \
+--data '{
+
+ "pNumber":"214124412",
+    "name":"u",
+    "email":"u",   
+    "password":""
+  
+   
+
+    
+}'
+
+
+curl --location 'http://localhost:8081/api/v1/auth/authenticate' \
+--header 'Content-Type: application/json' \
+--data '{
+
+
+    "email":"a",   
+    "password":""
+    
+}'
+
+curl --location 'http://localhost:8081/api/v1/class/add' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhIiwiaWF0IjoxNzI3ODUyMDA2LCJleHAiOjE3Mjc4NTM0NDZ9.rRecz4md9P8tl8p752aqbc0af7AKOVQZw4PkV-AobWs' \
+--data '{
+ "classDate": "2024-02-05",
+  "classTime": "14:00:00",
+  "classCapasity": 1,
+  "classRequirement":"minimsl 28 tahun punya handwrap",
+  "idTrainer": 1,
+  "className": "muaythai"
+}'
+
+curl --location 'http://localhost:8081/api/v1/class/book' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1IiwiaWF0IjoxNzI3NzU3MDYxLCJleHAiOjE3Mjc3NTg1MDF9.i6BsQk8GiJKVGJUlcAn_RNMirUXk_wHZSmK2SIsTJ8o' \
+--data '{
+"idClass":"2150802",
+"token" :"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1IiwiaWF0IjoxNzI3NzU3MDYxLCJleHAiOjE3Mjc3NTg1MDF9.i6BsQk8GiJKVGJUlcAn_RNMirUXk_wHZSmK2SIsTJ8o"
+}'
+
+
+curl --location 'http://localhost:8081/api/v1/class/getClasses?id=null' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1IiwiaWF0IjoxNzI3Njc3OTc2LCJleHAiOjE3Mjc2Nzk0MTZ9.fjyAqvC85PD4yQ-w6w1v9uoBdmz5zhkH4_4GT579cLE'  
+
+
+curl --location 'http://localhost:8081/api/v1/class/getClasses?date=2024-02-05' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1IiwiaWF0IjoxNzI3NzUyNzQxLCJleHAiOjE3Mjc3NTQxODF9.ZnmQzsYHTg6ZSDjsoB1Wx52SENImFuZWPb0534_CrXM'
+
+curl --location 'http://localhost:8081/api/v1/class/getHistory' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1IiwiaWF0IjoxNzI3NzU3MDYxLCJleHAiOjE3Mjc3NTg1MDF9.i6BsQk8GiJKVGJUlcAn_RNMirUXk_wHZSmK2SIsTJ8o'
+
+curl --location 'http://localhost:8081/api/v1/trainer/add' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1IiwiaWF0IjoxNzI3NTM4MzQxLCJleHAiOjE3Mjc1Mzk3ODF9.ZhWJwMjLCd8LoP5cqZ686QVa6TO9L-6aB1CU1ZD4GGs' \
+--data '{
+  "trainerName": "ujang ",
+  "trainerDescription": "melatih boxing dengan buruk"
+ 
+}'
+
+curl --location 'http://localhost:8081/api/v1/membership/buy' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhIiwiaWF0IjoxNzI4MDExOTMwLCJleHAiOjE3MjgwMTMzNzB9.xlRQWcza7RT6Mb4MIEjh_TnFgesHu-R_8Wu6BEEwzmo' \
+--form 'buktiTransfer=@"/Users/fozant/Downloads/AlNU3WTK_400x400.jpg"' \
+--form 'token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhIiwiaWF0IjoxNzI4MDExOTMwLCJleHAiOjE3MjgwMTMzNzB9.xlRQWcza7RT6Mb4MIEjh_TnFgesHu-R_8Wu6BEEwzmo"'

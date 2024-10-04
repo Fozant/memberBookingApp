@@ -120,7 +120,7 @@ Token Required = yes
   "duration": 30,
   "paymentType": "Credit Card",
   "paymentMethod": "Online",
-  "paymentStatus": "Paid",
+  "paymentStatus": "Waiting for status",
   "visitStartDate": "2024-02-21T12:00:00Z",
   "visitEndDate": "2024-03-21T12:00:00Z",
   "transactionPrice": 50
@@ -131,11 +131,9 @@ http://localhost:8081/api/v1/visitpackage/buy
 Token Required = yes
 {
   "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYiIsImlhdCI6MTcwODI1NDQ3NCwiZXhwIjoxNzA4MjU1OTE0fQ.Gr7k7WENuMUKb9bJi7XQ1REeFHEHI4v0VrnntjqK_eA",
-  "startDate": "2022-02-13T10:30:00",
-  "endDate": "2022-02-15T15:45:00",
   "price": 1000,
   "visitNumber": 5,
-  "visitUsed": 2,
+  "visitUsed": 0,
   "paymentType": "Credit Card",
   "paymentMethod": "Visa",
   "paymentStatus": "Paid",

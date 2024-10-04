@@ -2,6 +2,8 @@ package com.project.bookMembership.membership;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,12 +24,13 @@ public class MembershipRequest {
     private Long duration;
 
     //transaction part
-    private String paymentType;
+    // private String paymentType;
     private String paymentMethod;
     private String paymentStatus;
-    private Date visitStartDate;
-    private Date visitEndDate;
+    // private Date visitStartDate;
+    // private Date visitEndDate;
     private Long transactionPrice;
+    private MultipartFile buktiTransfer;
 
 }
 
