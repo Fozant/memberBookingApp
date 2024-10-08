@@ -2,6 +2,8 @@ package com.project.bookMembership.visitPackage;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,5 +30,5 @@ public class VisitPackageRequest {
     private Date visitStartDate;
     private Date visitEndDate;
     private Long transactionPrice;
-
+    private MultipartFile buktiTransfer;
 }
