@@ -6,7 +6,7 @@ import java.util.zip.DataFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.jsonwebtoken.io.IOException;
+
 import utils.ImageUtils;
 
 @Service
@@ -33,12 +33,11 @@ public class TransactionServiceImpl implements TransactionService {
             response.setIdTransaction(tx.getIdTransaction());
     
             try {
-                // Decompress the buktiTransfer image data
                 byte[] decompressedImage = ImageUtils.decompressImage(tx.getBuktiTransfer());
                 response.setBuktiTransfer(decompressedImage);
-                return response; // Return the response object
+                return response; 
             } catch (DataFormatException | java.io.IOException exception) {
-                // Handle the exceptions and wrap them in RuntimeException
+                
                 throw new RuntimeException("Error decompressing image for Transaction ID: " + tx.getIdTransaction(), exception);
             } 
         });

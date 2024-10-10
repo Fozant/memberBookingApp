@@ -24,6 +24,7 @@ public class Trainer {
 
     private String trainerName;
     private String trainerDescription;
+         
 
 
 }

@@ -1,16 +1,16 @@
-package com.project.bookMembership.transaction;
+package com.project.bookMembership.trainer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetTransactionResponse {
+public class TrainerScheduleRequest {
 
-    private Long idTransaction;
-    private byte[] buktiTransfer;
+
+    
+    private String token;
 }

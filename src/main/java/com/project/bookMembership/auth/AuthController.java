@@ -20,7 +20,7 @@ public class AuthController {
         
         @RequestBody RegisterRequest request
         
-    ){
+    ){  
         return ResponseEntity.ok(service.register(request));
     }
 
