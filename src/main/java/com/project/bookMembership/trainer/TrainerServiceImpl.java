@@ -48,20 +48,25 @@ public class TrainerServiceImpl implements TrainerService{
 
     @Override
     public List<TrainingClass> getTrainerSchedule(TrainerScheduleRequest trainerScheduleRequest) {
-         String email = jwtService.extractUsername(trainerScheduleRequest.getToken());
-        
+        String email = jwtService.extractUsername(trainerScheduleRequest.getToken());
         
         Optional<User> optionalUser = userRepo.findByEmail(email);
-        
-
+    
         if (optionalUser.isPresent()) {
             User user = optionalUser.get(); 
             
-            List<TrainingClass> trainingClasses = trainingClassRepo.findByUserId(user.getIdUser());
-            return trainingClasses;
+            Trainer trainer = user.getIdTrainer(); 
+            if (trainer != null) {
+               
+                Long trainerId = trainer.getIdTrainer();
+                List<TrainingClass> trainingClasses = trainingClassRepo.findByTrainerId(trainerId);
+                return trainingClasses;
+            } else {
+               
+                return new ArrayList<>();
+            }
         } else {
-
-            return new ArrayList<>(); 
+            return new ArrayList<>();
         }
     }
 
