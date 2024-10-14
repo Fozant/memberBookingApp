@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class VisitPackageController {
 
 
-       private final VisitPackageService visitPackageService;
+    private final VisitPackageService visitPackageService;
 
     @PostMapping("/buy")
     public ResponseEntity<String> addClass(@RequestBody VisitPackageRequest visitPackageRequest) {

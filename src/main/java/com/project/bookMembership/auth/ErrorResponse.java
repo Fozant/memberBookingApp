@@ -1,5 +1,4 @@
-package com.project.bookMembership.classes;
-
+package com.project.bookMembership.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,13 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClassDetailRequest {
-    
-    
-    private Long idClass;
-    private String token;
 
-    private String type;
-
+public class ErrorResponse {
     
+    private String message;
+
 }

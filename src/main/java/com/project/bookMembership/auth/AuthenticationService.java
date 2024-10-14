@@ -1,6 +1,7 @@
 package com.project.bookMembership.auth;
 
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +28,9 @@ public class AuthenticationService {
     private final TrainerService trainerService;
 
     public AuthenticationResponse register(RegisterRequest request) {
+        if (repo.findByEmail(request.getEmail()).isPresent()) {
+            throw new RuntimeException("Email is already in use.");
+        }
         Date currentdate = new Date();
         var user = User.builder()
             .name(request.getName())
@@ -65,7 +69,8 @@ public class AuthenticationService {
         .token(jwtToken)
         .build();
 }
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    try {
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                 request.getEmail(),
@@ -74,14 +79,17 @@ public class AuthenticationService {
         );
 
         var user = repo.findByEmail(request.getEmail())
-            .orElseThrow();
-        
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
             .token(jwtToken)
             .role(user.getRole())
             .idUser(user.getIdUser())
             .build();
+    } catch (BadCredentialsException ex) {
+        throw new RuntimeException("Wrong email or password"); // Customize this message as needed
+    } catch (RuntimeException ex) {
+        throw new RuntimeException("Authentication failed: " + ex.getMessage());
     }
-  
-}
+}}

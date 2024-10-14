@@ -16,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.bookMembership.config.JwtService;
-import com.project.bookMembership.user.User;
-import com.project.bookMembership.user.UserRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @RestController

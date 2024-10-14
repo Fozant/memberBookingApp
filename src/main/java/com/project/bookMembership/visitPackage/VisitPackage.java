@@ -44,4 +44,12 @@ public class VisitPackage {
     private Long price;
     private Long visitNumber;
     private long visitUsed;
+
+    public void incrementUsedVisits() {
+        this.visitUsed++;
+    }
+
+    public void decrementVisitNumber() {
+        this.visitNumber--;
+    }
 }
