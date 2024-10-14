@@ -33,11 +33,22 @@ public ClassDetail book(ClassDetailRequest classDetailRequest) {
        String emailz =(jwtService.extractUsername(classDetailRequest.getToken()));
        User user = userRepo.findByEmail(emailz)
        .orElseThrow(() -> new RuntimeException("User not found"));
+  
+
+       Long idTrainingClass = classDetailRequest.getIdClass();
+       TrainingClass trainingClass = trainingClassRepo.findById(idTrainingClass)
+           .orElseThrow(() -> new RuntimeException("Training class not found"));        
 
 
-        Long idTrainingclass = classDetailRequest.getIdClass();
-        TrainingClass trainingClass = trainingClassRepo.findById(idTrainingclass)
-        .orElseThrow(() -> new RuntimeException("Training class not found"));
+        boolean isAlreadyBooked = classDetailRepository.existsByIdUserAndIdClass(user, trainingClass);
+        if (isAlreadyBooked) {
+       throw new RuntimeException("User has already booked this class");
+           }
+
+        int bookedCount = classDetailRepository.countByIdClass(trainingClass);
+        if (bookedCount >= trainingClass.getClassCapasity()) {
+            throw new RuntimeException("Class is full");
+        }
 
 
             var classDetail = ClassDetail.builder()

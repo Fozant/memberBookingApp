@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.project.bookMembership.config.JwtService;
+import com.project.bookMembership.user.User;
+import com.project.bookMembership.user.UserRepo;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -23,6 +29,8 @@ public class ClassController {
 
     private final ClassService classService;
     private final ClassDetailService classDetailService;
+
+
 
     @PostMapping("/add")
     public ResponseEntity<String> addClass(@RequestBody ClassRequest classRequest) {
@@ -35,10 +43,13 @@ public class ClassController {
     @PostMapping("/book")
     public ResponseEntity<String> book(@RequestBody ClassDetailRequest classDetailRequest) {
       
-      
+       
+        try {
         classDetailService.book(classDetailRequest);
-
-        return ResponseEntity.ok("book class success");
+        return ResponseEntity.ok("Class booked successfully");
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage()); 
+        }
     }
     
     @GetMapping("/getClasses")
