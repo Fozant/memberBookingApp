@@ -37,8 +37,8 @@ public class User implements UserDetails {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long idUser;
+
     private String pNumber;
     private String name;
     private String email;
@@ -51,8 +51,12 @@ public class User implements UserDetails {
     private Trainer idTrainer;
 
     @Enumerated(EnumType.STRING)
-    private Role  role;
+    private Role role;
 
+    public Role getRole() {
+        return this.role;
+    }
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
        
@@ -100,7 +104,7 @@ public class User implements UserDetails {
        
         return password;
     }
-    
 
+  
 
 }

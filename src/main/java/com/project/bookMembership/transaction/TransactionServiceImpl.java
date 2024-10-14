@@ -27,6 +27,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Optional<GetTransactionResponse> getById(Long id) {
         Optional<Transaction> transaction = transactionRepository.findById(id);
+
+    
     
         return transaction.map(tx -> {
             GetTransactionResponse response = new GetTransactionResponse();

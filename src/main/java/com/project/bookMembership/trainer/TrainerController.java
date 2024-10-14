@@ -31,11 +31,7 @@ public class TrainerController {
        trainerRequest.setIdTrainer(idTrainer);
        
        service.registerTrainer(trainerRequest);
-
        
-
-
-
         return ResponseEntity.ok("Trainer added successfully");
     }
 

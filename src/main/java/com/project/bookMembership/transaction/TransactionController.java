@@ -18,7 +18,7 @@ public class TransactionController {
      private final TransactionService transactionService;
 
      @PostMapping("/get")
-     public ResponseEntity<GetTransactionResponse> buymembership(@RequestParam Long id) {
+     public ResponseEntity<GetTransactionResponse> getTransaction(@RequestParam Long id) {
          Optional<GetTransactionResponse> transactionResponse = transactionService.getById(id);
      
          if (transactionResponse.isPresent()) {
@@ -28,6 +28,6 @@ public class TransactionController {
              
              return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
          }
-     
+        // return ResponseEntity.of(transactionResponse);
 }
 }

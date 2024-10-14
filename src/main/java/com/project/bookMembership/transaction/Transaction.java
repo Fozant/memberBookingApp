@@ -32,15 +32,13 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idTransaction;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, optional = true)
     @JoinColumn(name = "membership_id", nullable = true)
     private Membership membership;
 
-    
     @ManyToOne
     @JoinColumn(name = "Visit_id", nullable = true)
     private VisitPackage visitPackage;
-
 
     private Date visitStartDate;
     private Date visitEndDate;
