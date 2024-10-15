@@ -47,6 +47,7 @@ public class ClassServiceImpl implements ClassService {
     
         
         TrainingClass savedClass = trainingClassRepo.save(trainingClass);
+        
       
         Trainer trainer = trainerRepo.findById(request.getIdTrainer())
         .orElseThrow(() -> new RuntimeException("Trainer not found"));

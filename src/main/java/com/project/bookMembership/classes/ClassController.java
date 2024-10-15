@@ -29,11 +29,17 @@ public class ClassController {
 
 
     @PostMapping("/add")
-    public ResponseEntity<String> addClass(@RequestBody ClassRequest classRequest) {
+    public ResponseEntity<?> addClass(@RequestBody ClassRequest classRequest) {
         
-        classService.save(classRequest); 
+         
 
-        return ResponseEntity.ok("Class added successfully");
+        try {
+            classService.save(classRequest);
+            return ResponseEntity.ok("Class added successfully");
+            } catch (RuntimeException ex) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage()); 
+            }
+      
     }
 
     @PostMapping("/book")
@@ -85,8 +91,7 @@ public class ClassController {
     
         List<TrainingClass> trainingClasses = new ArrayList<>();
      
-
-            trainingClasses = classService.getClassHistory(classHistoryRequest);
+        trainingClasses = classService.getClassHistory(classHistoryRequest);
      
         List<GetClassResponse> responseList = trainingClasses.stream()
             .map(trainingClass -> GetClassResponse.builder()
